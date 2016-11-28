@@ -1,0 +1,10 @@
+{% extends 'master' %}
+
+{% block content %}
+
+  {% for candidate in candidates %}
+    {% include 'includes/candlistrecord' %}
+    <hr />
+  {% endfor %}
+
+{% endblock %}

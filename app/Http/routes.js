@@ -19,6 +19,12 @@ const Route = use('Route')
 
 Route.on('/').render('welcome')
 
-Route.on('/candlist').render('candlist')
+Route.get('/cand/list', 'CandidateController.list');
 
-Route.on('/candcreate').render('candcreate')
+Route.get('/cand/create', 'CandidateController.create');
+
+Route.get('/cand/:id', 'CandidateController.show');
+
+Route.get('/cand/:id/edit', 'CandidateController.edit');
+
+//Route.on('/cand/create').render('cand_create')

@@ -1,0 +1,6 @@
+<li {% if (request.url() == "/candlist") %}class="active"{% endif %}>
+  <a href="/candlist">Lista kandydatów <span class="sr-only">(current)</span></a>
+</li>
+<li {% if (request.url() == "/candcreate") %}class="active"{% endif %}>
+  <a href="/candcreate">Nowy kandydat</a>
+</li>
