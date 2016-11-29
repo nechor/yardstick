@@ -27,4 +27,8 @@ Route.get('/cand/:id', 'CandidateController.show');
 
 Route.get('/cand/:id/edit', 'CandidateController.edit');
 
+Route.post('/cand/store', 'CandidateController.store');
+
+Route.post('/cand/:id/update', 'CandidateController.update');
+
 //Route.on('/cand/create').render('cand_create')
