@@ -1,20 +1,18 @@
 {% extends 'master' %}
 
 {% block content %}
-<form class="inline-form">
-  <div class="form-group">
-    <label for="edName">Imię</label>
-    <input type="text" class="form-control" id="edName" placeholder="Imię">
-  </div>
-  <div class="form-group">
-    <label for="edLastName">Nazwisko</label>
-    <input type="text" class="form-control" id="edLastName" placeholder="Nazwisko">
-  </div>
-  <div class="checkbox hidden">
-    <label>
-      <input type="checkbox"> Check me out
-    </label>
-  </div>
-  <button type="submit" class="btn btn-default">Zapisz</button>
-</form>
+{{ form.open({action: 'CandidateController.store', class: 'inline-form'}) }}
+  {{ csrfField }}
+  {{fieldset class="form-group"}}
+    {{ form.label('Imię') }}
+    {{ form.text('name', null, { class: 'form-control', placeholder: 'Imię' }) }}
+  {{fieldset}}
+
+  <fieldset class="form-group">
+    {{ form.label('Nazwisko') }}
+    {{ form.text('lastname', null, { class: 'form-control', placeholder: 'Nazwisko' }) }}
+  </fieldset>
+
+  {{ form.submit('Zapisz', 'zapisz', { class: 'btn btn-primary btn-block' }) }}
+{{ form.close() }}
 {% endblock %}

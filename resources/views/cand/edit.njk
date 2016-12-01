@@ -1,26 +1,26 @@
 {% extends 'master' %}
 
 {% block content %}
-  <form class="inline-form" method="post" action="update">
-    {{ csrField }}
-    <div class="form-group">
-      <label for="edName">Imię</label>
-      <input type="text" class="form-control" id="edName" placeholder="Imię" value="{{ candidate.name }}">
-    </div>
-    <div class="form-group">
-      <label for="edLastName">Nazwisko</label>
-      <input type="text" class="form-control" id="edLastName" placeholder="Nazwisko" value="{{ candidate.lastname }}">
-    </div>
-    <div class="form-group">
+  {{ form.open({action: 'CandidateController.update', params: {id: candidate.id}, class: 'inline-form'}) }}
+
+    <fieldset class="form-group">
+      {{ form.label('Imię') }}
+      {{ form.text('name', candidate.name, { class: 'form-control', placeholder: 'Imię' }) }}
+    </fieldset>
+    <fieldset class="form-group">
+      {{ form.label('Nazwisko') }}
+      {{ form.text('lastname', candidate.lastname, { class: 'form-control', placeholder: 'Nazwisko' }) }}
+    </fieldset>
+    <fieldset class="form-group">
       <label for="cvFile">Dokument CV</label>
       <input type="file" id="cvFile">
       <p class="help-block">Wczytaj plik zawierający CV.</p>
-    </div>
+      </fieldset>
     <div class="checkbox hidden">
       <label>
         <input type="checkbox"> Check me out
       </label>
     </div>
-    <button type="submit" class="btn btn-default">Zapisz</button>
-  </form>
+    {{ form.submit('Zapisz', '', { class: 'btn btn-primary btn-block' }) }}
+  {{ form.close() }}
 {% endblock %}
