@@ -27,6 +27,8 @@ Route.get('/cand/:id', 'CandidateController.show');
 
 Route.get('/cand/:id/edit', 'CandidateController.edit');
 
+Route.get('/cand/:id/delete', 'CandidateController.delete');
+
 Route.post('/cand/store', 'CandidateController.store');
 
 Route.post('/cand/:id/update', 'CandidateController.update');

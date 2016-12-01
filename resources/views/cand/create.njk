@@ -1,18 +1,18 @@
 {% extends 'master' %}
 
 {% block content %}
-{{ form.open({action: 'CandidateController.store', class: 'inline-form'}) }}
-  {{ csrfField }}
-  {{fieldset class="form-group"}}
-    {{ form.label('Imię') }}
-    {{ form.text('name', null, { class: 'form-control', placeholder: 'Imię' }) }}
-  {{fieldset}}
+  {{ form.open({action: 'CandidateController.store', class: 'inline-form'}) }}
+    {{ csrfField }}
+    <fieldset class="form-group">
+      {{ form.label('Imię') }}
+      {{ form.text('name', null, { class: 'form-control', placeholder: 'Imię' }) }}
+    </fieldset>
 
-  <fieldset class="form-group">
-    {{ form.label('Nazwisko') }}
-    {{ form.text('lastname', null, { class: 'form-control', placeholder: 'Nazwisko' }) }}
-  </fieldset>
+    <fieldset class="form-group">
+      {{ form.label('Nazwisko') }}
+      {{ form.text('lastname', null, { class: 'form-control', placeholder: 'Nazwisko' }) }}
+    </fieldset>
 
-  {{ form.submit('Zapisz', 'zapisz', { class: 'btn btn-primary btn-block' }) }}
-{{ form.close() }}
+    {{ form.submit('Zapisz', 'zapisz', { class: 'btn btn-primary btn-block' }) }}
+  {{ form.close() }}
 {% endblock %}

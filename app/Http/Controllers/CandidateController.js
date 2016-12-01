@@ -6,8 +6,8 @@ const Database = use('Database')
 class CandidateController {
 
   * list (request, response) {
-      const candidates = yield Candidate.all()
-      yield response.sendView('cand/list', { candidates: candidates.toJSON() })
+      const candidates = yield Database.select('*').from('candidates').orderBy('lastname', 'asc')
+      yield response.sendView('cand/list', { candidates: candidates})
     }
 
   * show (request, response) {
@@ -34,6 +34,12 @@ class CandidateController {
       yield response.sendView('cand/create')
     }
 
+  * delete (request, response) {
+    const candidate = yield Candidate.findBy('id', request.param('id'))
+    yield candidate.delete()
+    response.redirect('/cand/list')
+    }
+
   //zapisanie nowego kolesia
   * store (request, response) {
       const candidateData = request.only('name', 'lastname')
@@ -46,7 +52,6 @@ class CandidateController {
     const candidate = yield Candidate.query()
       .where('id', request.param('id'))
       .first()
-    console.log("-------------------------", request.param('id'));
     const candidateData = request.only('name', 'lastname')
     candidate.name = candidateData.name
     candidate.lastname = candidateData.lastname
