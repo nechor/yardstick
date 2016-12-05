@@ -15,12 +15,7 @@
       <label for="cvFile">Dokument CV</label>
       <input type="file" id="cvFile">
       <p class="help-block">Wczytaj plik zawierający CV.</p>
-      </fieldset>
-    <div class="checkbox hidden">
-      <label>
-        <input type="checkbox"> Check me out
-      </label>
-    </div>
-    {{ form.submit('Zapisz', '', { class: 'btn btn-primary btn-block' }) }}
-  {{ form.close() }}
+    </fieldset>
+  {{ form.submit('Zapisz', '', { class: 'btn btn-primary btn-block' }) }}
+  
 {% endblock %}

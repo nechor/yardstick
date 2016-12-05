@@ -55,7 +55,11 @@ class CandidateController {
     const candidateData = request.only('name', 'lastname')
     candidate.name = candidateData.name
     candidate.lastname = candidateData.lastname
-
+    const plik = request.file('cvFile', {
+        maxSize: '2mb',
+        allowedExtensions: ['txt']
+    })
+    console.log("*** Plik: " + plik)
     yield candidate.save()
     response.redirect('/cand/list')
     }
