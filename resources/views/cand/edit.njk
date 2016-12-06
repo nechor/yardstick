@@ -1,7 +1,7 @@
 {% extends 'master' %}
 
 {% block content %}
-  {{ form.open({action: 'CandidateController.update', params: {id: candidate.id}, class: 'inline-form'}) }}
+  {{ form.open({action: 'CandidateController.update', params: {id: candidate.id}, class: 'inline-form', files: true}) }}
 
     <fieldset class="form-group">
       {{ form.label('Imię') }}
@@ -13,9 +13,9 @@
     </fieldset>
     <fieldset class="form-group">
       <label for="cvFile">Dokument CV</label>
-      <input type="file" id="cvFile">
+      {{ form.file('cvFile') }}
       <p class="help-block">Wczytaj plik zawierający CV.</p>
     </fieldset>
   {{ form.submit('Zapisz', '', { class: 'btn btn-primary btn-block' }) }}
-  
+  {{ form.close() }}
 {% endblock %}
