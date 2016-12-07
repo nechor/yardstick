@@ -1,7 +1,10 @@
 'use strict'
 
+const Helpers = use('Helpers')
 const Candidate = use('App/Model/Candidate')
 const Database = use('Database')
+const mv = use('mv')
+const path = use('path');
 
 class CandidateController {
 
@@ -55,11 +58,16 @@ class CandidateController {
     const candidateData = request.only('name', 'lastname')
     candidate.name = candidateData.name
     candidate.lastname = candidateData.lastname
-    const plik = request.file('cvFile', {
-        maxSize: '2mb',
-        allowedExtensions: ['txt']
+
+    const cvFile = request.file('cvFile', {
+        maxSize: '5mb',
+        allowedExtensions: ['txt', 'doc', 'docx', 'pdf']
     })
-    console.log("*** Plik: " + plik)
+    mv(cvFile.file.path, path.join(Helpers.storagePath(), 'docs', candidate.id.toString(), 'CV'+path.extname(cvFile.file.name)), {mkdirp: true}, function(err) {
+      if (err) {console.log("error moving uploaded file")}
+    });
+    candidate.cvfile = cvFile.file.name
+
     yield candidate.save()
     response.redirect('/cand/list')
     }

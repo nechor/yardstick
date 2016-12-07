@@ -12,7 +12,6 @@
 |
 */
 
-// const Factory = use('Factory')
 
 const Factory = use('Factory')
 

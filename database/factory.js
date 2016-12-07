@@ -24,6 +24,7 @@ const Factory = use('Factory')
 Factory.blueprint('App/Model/Candidate', (fake) => {
   return {
     name: fake.string(),
-    lastname: fake.string()
+    lastname: fake.string(),
+    cvfile: ''
   }
 })

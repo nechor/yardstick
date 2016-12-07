@@ -20,6 +20,7 @@
     "adonis-lucid": "^3.0.10",
     "adonis-middleware": "^1.0.8",
     "i": "^0.3.5",
+    "mv": "^2.1.1",
     "sqlite3": "^3.1.8",
     "standard": "^8.4.0",
     "youch": "^1.0.1"

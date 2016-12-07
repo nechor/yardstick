@@ -9,6 +9,7 @@ class CandidatesTableSchema extends Schema {
       table.increments()
       table.string('name')
       table.string('lastname')
+      table.string('cvfile')
       table.timestamps()
     })
   }
